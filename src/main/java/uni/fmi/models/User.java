@@ -8,7 +8,7 @@ import java.util.Set;
 public class User {
 
 	private String username;
-	private String passowrd;
+	private String password;
 	private String email;
 	private Set<Role> roles;
 	private Set<Post> posts;
@@ -21,6 +21,11 @@ public class User {
 	 * Default constructor
 	 */
 	public User() {
+	}
+
+	public User(final String username, final String password) {
+		this.username=username;
+		this.password=password;
 	}
 
 	/**
@@ -42,7 +47,7 @@ public class User {
 	 * @return
 	 */
 	public String getPassword() {
-		return passowrd;
+		return password;
 	}
 
 	/**
@@ -50,7 +55,7 @@ public class User {
 	 * @return
 	 */
 	public void setPassword(String pass) {
-		this.passowrd = pass;
+		this.password = pass;
 	}
 
 	/**
