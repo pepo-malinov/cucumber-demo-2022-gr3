@@ -21,11 +21,17 @@ public class User {
 	 * Default constructor
 	 */
 	public User() {
+		this(null, null, null);
 	}
 
 	public User(final String username, final String password) {
-		this.username=username;
-		this.password=password;
+		this(username, password, null);
+	}
+
+	public User(final String username, final String password, final String email) {
+		this.username = username;
+		this.password = password;
+		this.email = email;
 	}
 
 	/**

@@ -16,14 +16,14 @@ public class LoginSteps {
 		loginModel = new LoginScreenModel();
 	}
 
-	@When("^Въведе валидно потребителско име$")
-	public void addUsername() throws Throwable {
-		loginModel.setUsername("Иван");
+	@When("^Въведе потребителско име: \"([^\"]*)\"$")
+	public void addUsername(final String username) throws Throwable {
+		loginModel.setUsername(username);
 	}
 
-	@When("^въведе валидна потребителска парола$")
-	public void addPassword() throws Throwable {
-		loginModel.setPassword("123!pass");
+	@When("^въведе потребителска парола: \"([^\"]*)\"$")
+	public void addPassword(final  String pass) throws Throwable {
+		loginModel.setPassword(pass);
 	}
 
 	@When("^натисне бутона за вход в системата$")
@@ -31,24 +31,9 @@ public class LoginSteps {
 		loginModel.clickLoginButton();
 	}
 
-	@Then("^Вижда съобщение за успех\\.$")
-	public void checkMessage() throws Throwable {
-		assertEquals("Успешно влизане!", loginModel.getMessage());
-	}
-
-	@Then("^Вижда съобщение за липсващи данни\\.$")
-	public void checkForMissingDataMessage() throws Throwable {
-		assertEquals("Въведете име и парола!", loginModel.getMessage());
-	}
-
-	@When("^Въведе невалидно потребителско име$")
-	public void addWrongUsername() throws Throwable {
-		loginModel.setUsername("Wrong user name");
-	}
-
-	@Then("^Вижда съобщение грешни данни\\.$")
-	public void checkForWrongDataMessage() throws Throwable {
-		assertEquals("Грешни данни!", loginModel.getMessage());
+	@Then("^Вижда съобщение: \"([^\"]*)\"$")
+	public void checkMessage(final String expectedMessage) throws Throwable {
+		assertEquals(expectedMessage, loginModel.getMessage());
 	}
 
 }
